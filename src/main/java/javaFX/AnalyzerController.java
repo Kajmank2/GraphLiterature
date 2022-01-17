@@ -32,7 +32,6 @@ public class AnalyzerController {
             Globals.textStat = new TextStatistic(text);
             Globals.wordStat = new WordsStatistic(analyzedWords);
 
-
             /*
             public List<String> getWords() {
         return words;

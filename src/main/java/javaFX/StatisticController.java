@@ -13,6 +13,8 @@ import javafx.scene.control.TextArea;
 import org.w3c.dom.Text;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.Map;
 
 import static javaFX.Globals.textStat;
 import static javaFX.Globals.wordStat;
@@ -20,13 +22,17 @@ public class StatisticController {
     @FXML
     Label labelWordsCount;
     @FXML
+    Label labelUniqueWordsCount;
+    @FXML
     TextArea textWordsOccur;
     Alert a = new Alert(Alert.AlertType.NONE); // value for alert type
 
     public void viewStatWholeText() {
         try {
-            labelWordsCount.setText(Integer.toString(textStat.getNumberOfUniqueWords())); // TextStats
+            labelUniqueWordsCount.setText(Integer.toString(textStat.getNumberOfUniqueWords())); // WholeTextStats
             textWordsOccur.setText(textStat.getWordsOccurrence().toString());
+            labelWordsCount.setText(Integer.toString(textStat.getNumberOfWords()));
+            System.out.println(textStat);
         } catch (Exception e){
             // Handle a potential exception
             a.setAlertType(Alert.AlertType.ERROR);
@@ -38,8 +44,10 @@ public class StatisticController {
 
    public void viewStatAnalyzedText() {
         try {
-            labelWordsCount.setText(Integer.toString(wordStat.getNumberOfUniqueWords())); // WholeTextStats
+            labelUniqueWordsCount.setText(Integer.toString(wordStat.getNumberOfUniqueWords())); // WholeTextStats
             textWordsOccur.setText(wordStat.getWordsOccurrence().toString());
+            labelWordsCount.setText(Integer.toString(wordStat.getNumberOfWords()));
+            System.out.println(wordStat);
         }catch (Exception e){
             // Handle a potential exception
             a.setAlertType(Alert.AlertType.ERROR);
@@ -47,6 +55,20 @@ public class StatisticController {
             // show the dialog
             a.show();
         }
+        /*
+       public List<String> getWords() {
+           return words;
+       }
+       public int getNumberOfWords() {
+           return numberOfWords;
+       }
+       public int getNumberOfUniqueWords() {
+           return numberOfUniqueWords;
+       }
+       public Map<String, Integer> getWordsOccurrence() {
+           return wordsOccurrence;
+       }
+         */
     }
 }
 
